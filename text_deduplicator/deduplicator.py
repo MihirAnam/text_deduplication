@@ -117,13 +117,13 @@ def find_duplicates(df,column,threshold=0.8,consider_date=False,date_column="Dat
     print("creating cosine simalarity matrix")
     similarity_matrix = cosine_similarity(tfidf_matrix)
     similarity_df = pd.DataFrame(similarity_matrix, index=df_dedup['index'], columns=df_dedup['index'])
-
+    print("threshold set to - ",threshold)
     print("mapping duplicates")
     l1=[]
     index_list=[]
     for i in similarity_df.columns:
         if i not in l1:
-            index=similarity_df[(similarity_df[i]>0.75) & (similarity_df.index!=i)].index
+            index=similarity_df[(similarity_df[i]>threshold) & (similarity_df.index!=i)].index
             if len(index)>0:
                 l1=l1+list(index)
                 # print(">>",i)
