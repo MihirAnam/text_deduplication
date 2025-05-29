@@ -21,7 +21,7 @@ from text_deduplicator import find_duplicates
 
 
 ```python
-df_dedup = pd.read_excel("output_combined/2024/cyber_2024_cra_combined.xlsx")
+df_dedup = pd.read_excel("yourfilename.xlsx")
 ```
 
 
