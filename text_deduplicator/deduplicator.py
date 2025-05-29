@@ -65,7 +65,7 @@ def merge_lists(lists):
 # print(result)
 
 
-def find_duplicates(df,column,threshold=0.8,consider_date=False,sub_check=False):
+def find_duplicates(df,column,threshold=0.8,consider_date=False,date_column="Date",sub_check=False):
     """
     Identifies duplicate text entries in a DataFrame based on cosine similarity using TF-IDF.
 
@@ -160,7 +160,7 @@ def find_duplicates(df,column,threshold=0.8,consider_date=False,sub_check=False)
         l2=[]
         for i in index_list3:
             # print(i)
-            dup_index=df_dedup[df_dedup['index'].isin(i)].sort_values("Date",ascending=False).reset_index(drop=True)[:1]['index'].item()
+            dup_index=df_dedup[df_dedup['index'].isin(i)].sort_values(date_column,ascending=False).reset_index(drop=True)[:1]['index'].item()
             # print(dup_index)
             i.remove(dup_index)
             # print(i)
